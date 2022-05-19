@@ -2,92 +2,92 @@
   <head>
     <script src="https://aframe.io/releases/1.3.0/aframe.min.js"></script>
     <script src="https://cdn.jsdelivr.net/gh/donmccurdy/aframe-extras@v6.1.1/dist/aframe-extras.min.js"></script>
+
   </head>
   <body>
-    <a-scene shoot-controls>
+    <a-scene>
       <a-assets>
         <img id="background" src="https://clipground.com/images/blue-blue-sky-clipart-15.jpg">
-        <a-asset-item id="rex" src="https://raw.githubusercontent.com/Dbald/Sandox/main/assets/rex/rex.gltf"></a-asset-item>
         <a-asset-item id="hall" src="https://raw.githubusercontent.com/Dbald/Sandox/main/assets/hall/hall.gltf"></a-asset-item>
       </a-assets>
       <a-sky color="black"></a-sky>
-      <a-entity id="cameraRig" movement-controls position="0 -4 -2" rotation="0 180 0" animation="property: position; delay: 1000; dur: 4000; easing: linear; to: 0 -0.5 -2">
+      <a-entity id="cameraRig" movement-controls position="0 -6 -2" rotation="0 180 0" animation="property: position; delay: 1000; dur: 4000; easing: linear; to: 0 -0.5 -2">
         <a-camera></a-camera>
       </a-entity>
-      
-      <a-gltf-model scale="0.3 0.3 0.3" rotation="0 180 0" src="#rex" animation-mixer="clip: *;"></a-gltf-model>
-      <a-gltf-model scale="1 1 1" position="0 1.344 0" rotation="180 -90 180" src="#hall"></a-gltf-model>
+      <a-entity oculus-touch-controls="hand: left" model="true"></a-entity>
+      <a-entity oculus-touch-controls="hand: right" model="true"></a-entity>
+      <a-gltf-model animation-mixer="clip: *" scale="1 1 1" position="0 1.344 0" rotation="180 -90 180" src="#hall"></a-gltf-model>
       <a-box color="black" position="0 -2.533 -1.096" scale="5 5 1"></a-box>
     </a-scene>
     <script>
-      AFRAME.registerComponent('shoot-controls', {
-  // dependencies: ['tracked-controls'],
-  schema: {
-    hand: { default: 'left' }
-  },
+//       AFRAME.registerComponent('shoot-controls', {
+//   // dependencies: ['tracked-controls'],
+//   schema: {
+//     hand: { default: 'left' }
+//   },
 
-  init: function () {
-    var self = this;
+//   init: function () {
+//     var self = this;
 
-    this.onButtonChanged = this.onButtonChanged.bind(this);
-    this.onButtonDown = function (evt) { self.onButtonEvent(evt.detail.id, 'down'); };
-    this.onButtonUp = function (evt) { self.onButtonEvent(evt.detail.id, 'up'); };
-  },
+//     this.onButtonChanged = this.onButtonChanged.bind(this);
+//     this.onButtonDown = function (evt) { self.onButtonEvent(evt.detail.id, 'down'); };
+//     this.onButtonUp = function (evt) { self.onButtonEvent(evt.detail.id, 'up'); };
+//   },
 
-  play: function () {
-    var el = this.el;
-    el.addEventListener('buttonchanged', this.onButtonChanged);
-    el.addEventListener('buttondown', this.onButtonDown);
-    el.addEventListener('buttonup', this.onButtonUp);
-  },
+//   play: function () {
+//     var el = this.el;
+//     el.addEventListener('buttonchanged', this.onButtonChanged);
+//     el.addEventListener('buttondown', this.onButtonDown);
+//     el.addEventListener('buttonup', this.onButtonUp);
+//   },
 
-  pause: function () {
-    var el = this.el;
-    el.removeEventListener('buttonchanged', this.onButtonChanged);
-    el.removeEventListener('buttondown', this.onButtonDown);
-    el.removeEventListener('buttonup', this.onButtonUp);
-  },
+//   pause: function () {
+//     var el = this.el;
+//     el.removeEventListener('buttonchanged', this.onButtonChanged);
+//     el.removeEventListener('buttondown', this.onButtonDown);
+//     el.removeEventListener('buttonup', this.onButtonUp);
+//   },
 
-  // buttonId
-  // 0 - trackpad
-  // 1 - trigger ( intensity value from 0.5 to 1 )
-  // 2 - grip
-  // 3 - menu ( dispatch but better for menu options )
-  // 4 - system ( never dispatched on this layer )
-  mapping: {
-    axis0: 'trackpad',
-    axis1: 'trackpad',
-    button0: 'trackpad',
-    button1: 'trigger',
-    button2: 'grip',
-    button3: 'menu',
-    button4: 'system'
-  },
+//   // buttonId
+//   // 0 - trackpad
+//   // 1 - trigger ( intensity value from 0.5 to 1 )
+//   // 2 - grip
+//   // 3 - menu ( dispatch but better for menu options )
+//   // 4 - system ( never dispatched on this layer )
+//   mapping: {
+//     axis0: 'trackpad',
+//     axis1: 'trackpad',
+//     button0: 'trackpad',
+//     button1: 'trigger',
+//     button2: 'grip',
+//     button3: 'menu',
+//     button4: 'system'
+//   },
 
-  onButtonChanged: function (evt) {
-    var buttonName = this.mapping['button' + evt.detail.id];
-    if (buttonName !== 'trigger') { return; }
-    var value = evt.detail.state.value;
-    this.el.components['weapon'].setTriggerPressure(value);
-  },
+//   onButtonChanged: function (evt) {
+//     var buttonName = this.mapping['button' + evt.detail.id];
+//     if (buttonName !== 'trigger') { return; }
+//     var value = evt.detail.state.value;
+//     this.el.components['weapon'].setTriggerPressure(value);
+//   },
 
-  onButtonEvent: function (id, evtName) {
-    var buttonName = this.mapping['button' + id];
-    this.el.emit(buttonName + evtName);
-  },
+//   onButtonEvent: function (id, evtName) {
+//     var buttonName = this.mapping['button' + id];
+//     this.el.emit(buttonName + evtName);
+//   },
 
-  update: function () {
-    var data = this.data;
-    var el = this.el;
-    el.setAttribute('vive-controls', {hand: data.hand, model: false});
-    el.setAttribute('oculus-touch-controls', {hand: data.hand, model: false});
-    el.setAttribute('windows-motion-controls', {hand: data.hand, model: false});
-    if (data.hand === 'right') {
-      el.setAttribute('daydream-controls', {hand: data.hand, model: false});
-      el.setAttribute('gearvr-controls', {hand: data.hand, model: false});
-    }
-  }
-});
+//   update: function () {
+//     var data = this.data;
+//     var el = this.el;
+//     el.setAttribute('vive-controls', {hand: data.hand, model: false});
+//     el.setAttribute('oculus-touch-controls', {hand: data.hand, model: false});
+//     el.setAttribute('windows-motion-controls', {hand: data.hand, model: false});
+//     if (data.hand === 'right') {
+//       el.setAttribute('daydream-controls', {hand: data.hand, model: false});
+//       el.setAttribute('gearvr-controls', {hand: data.hand, model: false});
+//     }
+//   }
+// });
     </script>
   </body>
 </html>
