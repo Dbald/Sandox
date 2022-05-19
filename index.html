@@ -13,9 +13,10 @@
       <a-sky color="black"></a-sky>
       <a-entity id="cameraRig" movement-controls position="0 -6 -2" rotation="0 180 0" animation="property: position; delay: 1000; dur: 4000; easing: linear; to: 0 -0.5 -2">
         <a-camera></a-camera>
+        <a-entity oculus-touch-controls="hand: left" model="true"></a-entity>
+        <a-entity oculus-touch-controls="hand: right" model="true"></a-entity>
       </a-entity>
-      <a-entity oculus-touch-controls="hand: left" model="true"></a-entity>
-      <a-entity oculus-touch-controls="hand: right" model="true"></a-entity>
+      
       <a-gltf-model animation-mixer="clip: *" scale="1 1 1" position="0 1.344 0" rotation="180 -90 180" src="#hall"></a-gltf-model>
       <a-box color="black" position="0 -2.533 -1.096" scale="5 5 1"></a-box>
     </a-scene>
