@@ -14,8 +14,8 @@
       <a-sky color="black"></a-sky>
       <a-entity id="cameraRig" movement-controls position="0 -6 -2" rotation="0 180 0" animation="property: position; delay: 1000; dur: 4000; easing: linear; to: 0 -0.5 -2">
         <a-camera></a-camera>
-        <a-entity oculus-touch-controls="hand: left; model:false" gltf-model="#gun"></a-entity>
-        <a-entity oculus-touch-controls="hand: right; model:false" gltf-model="#gun"></a-entity>
+        <a-entity scale="0.1 0.1 0.1" rotation="0 180 0" oculus-touch-controls="hand: left; model:false" gltf-model="#gun"></a-entity>
+        <a-entity scale="0.1 0.1 0.1" rotation="0 180 0" oculus-touch-controls="hand: right; model:false" gltf-model="#gun"></a-entity>
       </a-entity>
       
       <a-gltf-model scale="1 1 1" position="0 1.344 0" rotation="180 -90 180" src="#hall"></a-gltf-model>
