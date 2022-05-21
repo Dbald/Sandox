@@ -1,0 +1,167 @@
+{
+    "asset" : {
+        "generator" : "Khronos glTF Blender I/O v1.7.33",
+        "version" : "2.0"
+    },
+    "scene" : 0,
+    "scenes" : [
+        {
+            "name" : "Scene",
+            "nodes" : [
+                4
+            ]
+        }
+    ],
+    "nodes" : [
+        {
+            "mesh" : 0,
+            "name" : "Object_4"
+        },
+        {
+            "children" : [
+                0
+            ],
+            "name" : "Cube_0",
+            "scale" : [
+                0.24875696003437042,
+                1,
+                1
+            ],
+            "translation" : [
+                -9.451974619878456e-05,
+                0.3221317231655121,
+                -0.3660024404525757
+            ]
+        },
+        {
+            "children" : [
+                1
+            ],
+            "name" : "GLTF_SceneRootNode",
+            "rotation" : [
+                0.7071068286895752,
+                0,
+                0,
+                0.7071068286895752
+            ]
+        },
+        {
+            "children" : [
+                2
+            ],
+            "name" : "root"
+        },
+        {
+            "children" : [
+                3
+            ],
+            "name" : "Sketchfab_model",
+            "rotation" : [
+                0,
+                0.7071067094802856,
+                0.7071068286895752,
+                -3.0908616110991716e-08
+            ],
+            "scale" : [
+                0.2527967691421509,
+                0.2527967691421509,
+                0.2527967691421509
+            ]
+        }
+    ],
+    "materials" : [
+        {
+            "doubleSided" : true,
+            "name" : "Material.001",
+            "pbrMetallicRoughness" : {
+                "baseColorFactor" : [
+                    0.022877704352140427,
+                    0.022877704352140427,
+                    0.022877704352140427,
+                    1
+                ],
+                "roughnessFactor" : 0.6352940201759338
+            }
+        }
+    ],
+    "meshes" : [
+        {
+            "name" : "Object_0",
+            "primitives" : [
+                {
+                    "attributes" : {
+                        "POSITION" : 0,
+                        "NORMAL" : 1,
+                        "TEXCOORD_0" : 2
+                    },
+                    "indices" : 3,
+                    "material" : 0
+                }
+            ]
+        }
+    ],
+    "accessors" : [
+        {
+            "bufferView" : 0,
+            "componentType" : 5126,
+            "count" : 3803,
+            "max" : [
+                1.3904317617416382,
+                0.9289119839668274,
+                2.360705852508545
+            ],
+            "min" : [
+                -1.3896719217300415,
+                -1.5964899063110352,
+                -1.667844533920288
+            ],
+            "type" : "VEC3"
+        },
+        {
+            "bufferView" : 1,
+            "componentType" : 5126,
+            "count" : 3803,
+            "type" : "VEC3"
+        },
+        {
+            "bufferView" : 2,
+            "componentType" : 5126,
+            "count" : 3803,
+            "type" : "VEC2"
+        },
+        {
+            "bufferView" : 3,
+            "componentType" : 5123,
+            "count" : 4992,
+            "type" : "SCALAR"
+        }
+    ],
+    "bufferViews" : [
+        {
+            "buffer" : 0,
+            "byteLength" : 45636,
+            "byteOffset" : 0
+        },
+        {
+            "buffer" : 0,
+            "byteLength" : 45636,
+            "byteOffset" : 45636
+        },
+        {
+            "buffer" : 0,
+            "byteLength" : 30424,
+            "byteOffset" : 91272
+        },
+        {
+            "buffer" : 0,
+            "byteLength" : 9984,
+            "byteOffset" : 121696
+        }
+    ],
+    "buffers" : [
+        {
+            "byteLength" : 131680,
+            "uri" : "clonehandgun.bin"
+        }
+    ]
+}
