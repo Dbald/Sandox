@@ -11,7 +11,6 @@
 <body>
   <a-scene>
     <a-assets>
-      <img id="background" src="https://clipground.com/images/blue-blue-sky-clipart-15.jpg">
       <a-asset-item id="gun" src="./assets/gun/clonehandgun.gltf"></a-asset-item>
       <a-asset-item id="hall" src="https://raw.githubusercontent.com/Dbald/Sandox/main/assets/hall/hall.gltf">
       </a-asset-item>
@@ -21,22 +20,24 @@
 
     <!-- Camera -->
 
-    <a-entity id="cameraRig" movement-controls position="0 -7 -2" rotation="0 180 0"
-      animation="property: position; delay: 1000; dur: 4000; easing: linear; to: 0 -0.5 -2">
-      <a-camera></a-camera>
+    <a-entity id="cameraRig" movement-controls position="0 -7 -2" rotation="0 180 0"></a-entity>
 
       <!-- Motion Controllers -->
 
       <!-- Left -->
       <a-entity id="leftGun" oculus-touch-controls="hand: left; model:false" gltf-model="#gun"
         proxy-event__shoot="event: triggerdown; to: #leftGun; as: shoot"
-        proxy-event__shootsound="event: triggerdown; to: #gunSound; as: shoot"
-        shooter="bulletTypes: normal; activeBulletType: normal"></a-entity>
+        proxy-event__shootsound="event: triggerdown; to: #soundShootLeft; as: shoot"
+        shooter="bulletTypes: normal; activeBulletType: normal">
+        <a-entity id="soundShootLeft" sound="src: #gunSound; poolSize: 10; on: shoot; volume: 0.6"></a-entity>
+      </a-entity>
         <!-- Right -->
       <a-entity id="rightGun" oculus-touch-controls="hand: right; model:false" gltf-model="#gun"
         proxy-event__shoot="event: triggerdown; to: #rightGun; as: shoot"
-        proxy-event__shootsound="event: triggerdown; to: #gunSound; as: shoot"
-        shooter="bulletTypes: normal; activeBulletType: normal"></a-entity>
+        proxy-event__shootsound="event: triggerdown; to: #soundShootRight; as: shoot"
+        shooter="bulletTypes: normal; activeBulletType: normal">
+        <a-entity id="soundShootRight" sound="src: #gunSound; poolSize: 10; on: shoot; volume: 0.6"></a-entity>
+      </a-entity>
     </a-entity>
 
     <!-- Environment -->
@@ -44,7 +45,8 @@
     <a-gltf-model scale="1 1 1" position="0 1.344 0" rotation="180 -90 180" src="#hall"></a-gltf-model>
     <a-box color="black" position="0 -2.533 -1.096" scale="5 5 1"></a-box>
 
-    <a-entity bullet="name: normal; speed: 30.0; poolSize: 20" gltf-model="#bullet"></a-entity>
+    <a-entity bullet="name: normal; speed: 30.0; poolSize: 20" geometry="primitive: icosahedron; radius: 0.1;"
+    material="color: #FF7; emissiveIntensity: 0.5; emissive: #FF7"></a-entity>
 
   </a-scene>
   <script>
