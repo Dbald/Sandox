@@ -26,9 +26,13 @@
       <!-- Motion Controllers -->
 
       <!-- Left -->
-      <a-entity id="leftGun" oculus-touch-controls="hand: left; model:false" gltf-model="#gun"></a-entity>
+      <a-entity id="leftGun" oculus-touch-controls="hand: left; model:false" gltf-model="#gun">
+        <a-entity light="type: point; intensity: 0.75; distance: 50; decay: 2" position=""></a-entity>
+      </a-entity>
         <!-- Right -->
-      <a-entity id="rightGun" oculus-touch-controls="hand: right; model:false" gltf-model="#gun"></a-entity>
+      <a-entity id="rightGun" oculus-touch-controls="hand: right; model:false" gltf-model="#gun">
+        <a-entity light="type: point; intensity: 0.75; distance: 50; decay: 2" position=""></a-entity>
+      </a-entity>
     
       <!-- Z -->
     
